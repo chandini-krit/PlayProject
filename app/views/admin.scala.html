@@ -1,0 +1,127 @@
+@import controllers.routes
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome Admin</title>
+        <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f1f1f1;
+                    margin: 0;
+                }
+
+                .container {
+                    max-width: 400px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background-color: #fff;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    text-align: center;
+                }
+
+                form {
+                    max-width: 50%;
+                    margin: 0 auto;
+                    margin-top: 50px;
+                    padding: 20px;
+                    background-color: #fff;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                }
+                label {
+                    display: block;
+                    margin-bottom: 8px;
+                    margin-top: 10px;
+                }
+                input[type="password"],
+                input[type="email"]{
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                }
+                h1 {
+                    text-align: center;
+                }
+
+                p {
+                    text-align: center;
+                    font-size: 18px;
+                    color: #555;
+                }
+                .navbar {
+                    background-color: #333;
+                    color: #fff;
+                    padding: 10px;
+                }
+
+                .navbar ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .navbar li {
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+
+                .navbar a {
+                    color: #fff;
+                    text-decoration: none;
+                    padding: 10px;
+                }
+                .submit-button {
+                    width: 100%;
+                    padding: 10px;
+                    margin-top: 20px;
+                    background-color: #4CAF50;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    box-sizing: border-box;
+                }
+
+                .submit-button:hover {
+                    background-color: #45a049;
+                }
+                .error-message {
+                    color: red;
+                    margin: 20px;
+                    align-content: center;
+                    display: flex;
+                    justify-content: center;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="navbar">
+            <ul>
+                <li><a href="@routes.HomeController.index()">Home</a></li>
+                <li><a href="@routes.LoginController.login()">User</a></li>
+                <li><a href="@routes.AdminController.adminPage()">Admin</a></li>
+            </ul>
+        </div>
+
+        <h1>Admin</h1>
+        <form action="@routes.AdminController.authenticateAdmin()" method="POST">
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <button type="submit" class="submit-button">Enter</button>
+            </div>
+            @if(flash.containsKey("error")) {
+                <div class="error-message">@flash.get("error")</div>
+            }
+        </form>
+    </body>
+</html>

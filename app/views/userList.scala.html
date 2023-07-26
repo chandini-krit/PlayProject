@@ -1,0 +1,154 @@
+@(users: List[User])
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f1f1f1;
+                    margin: 0;
+                }
+
+                h1 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                th, td {
+                    padding: 10px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                }
+                tr:hover {
+                    background-color: #f5f5f5;
+                }
+
+                th {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+
+                .disable-button {
+                    background-color: #f44336;
+                    color: white;
+                    border: none;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    border-radius: 4px;
+                }
+
+                .disable-button:hover {
+                    background-color: #d32f2f;
+                }
+
+                .enable-button {
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    border-radius: 4px;
+                }
+
+                .enable-button:hover {
+                    background-color: #45a049;
+                }
+                .navbar {
+                    background-color: #333;
+                    color: #fff;
+                    padding: 10px;
+                }
+
+                .navbar ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .navbar li {
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+
+                .navbar a {
+                    color: #fff;
+                    text-decoration: none;
+                    padding: 10px;
+                }
+
+        </style>
+        <script>
+                // function toggleActivity(userId) {
+                //     var link = document.getElementById("link-"+userId);
+                //     if (link.innerHTML === "Enable") {
+                //         link.innerHTML = "Disable";
+                //     } else {
+                //         link.innerHTML = "Enable";
+                //     }
+                // }
+                @*function changeText(userId,event) {*@
+                @*    event.preventDefault();*@
+                @*    var button=document.getElementById("btn-"+userId);*@
+                @*    if (button.innerHTML === 'Disable') {*@
+                @*        button.innerHTML = 'Enable';*@
+                @*    } else {*@
+                @*        button.innerHTML = 'Disable';*@
+                @*    }*@
+                @*    var url="@routes.RegistrationController.enableUser(0)".replace("0", userId);*@
+                @*    window.location.href = url;*@
+                @*}*@
+        </script>
+
+    </head>
+    <body>
+        <div class="navbar">
+            <ul>
+                <li><a href="@routes.HomeController.index()">Home</a></li>
+                <li><a href="@routes.LoginController.login()">User</a></li>
+                <li><a href="@routes.AdminController.adminPage()">Admin</a></li>
+            </ul>
+        </div>
+        <h1>User List</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Country</th>
+                <th>Skills</th>
+                <th>Interests</th>
+                <th>Action</th>
+            </tr>
+            @for(user <- users) {
+                <tr>
+                    <td>@user.id</td>
+                    <td>@user.name</td>
+                    <td>@user.password</td>
+                    <td>@user.email</td>
+                    <td>@user.gender</td>
+                    <td>@user.country</td>
+                    <td>@user.skills</td>
+                    <td>@user.interests</td>
+                    <td>
+                        @if(user.active){
+@*                            <input type="button" id="btn-@user.id" class="disable-button" onclick="@routes.RegistrationController.enableUser(user.id,user.active)">Disable</input>*@
+                            <a id="link-@user.id" href="@routes.RegistrationController.enableUser(user.id,!user.active)" class="disable-button" >Disable</a>
+                        }else{
+@*                            <input type="button" id="btn-@user.id" class="disable-button" onclick="@routes.RegistrationController.enableUser(user.id,user.active)">Enable</input>*@
+                            <a id="link-@user.id" href="@routes.RegistrationController.enableUser(user.id,!user.active)" class="disable-button" >Enable</a>
+                        }
+                     </td>
+                </tr>
+            }
+        </table>
+    </body>
+
+</html>

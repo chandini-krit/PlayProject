@@ -1,0 +1,22 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+
+GET         /registration                controllers.RegistrationController.showForm()
+POST        /registration                controllers.RegistrationController.submitForm()
+POST        /registration/submitForm                controllers.RegistrationController.submitForm()
+#POST         /viewUsers                       controllers.RegistrationController.viewUsers()
+GET         /viewUsers                       controllers.RegistrationController.viewUsers()
+GET         /                        controllers.HomeController.index()
+GET         /admin                       controllers.AdminController.adminPage()
+GET         /login                            controllers.LoginController.login()
+GET         /userDetails                 controllers.LoginController.getUserDetails(emailId : String)
+#GET     /userDetail          controllers.LoginController.userDetails(emailId : String)
+GET         /users/enable/:userId/:active        controllers.RegistrationController.enableUser(userId: Int,active:Boolean)
+GET         /enableUser       controllers.RegistrationController.enableUser(userId: Int,active:Boolean)
+POST        /authenticate                controllers.LoginController.authenticate()
+POST        /adminAuthenticate            controllers.AdminController.authenticateAdmin()
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                controllers.Assets.at(path="/public", file)

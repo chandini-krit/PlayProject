@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Page</title>
+        <style>
+        /*body {*/
+        /*    font-family: Arial, sans-serif;*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*}*/
+
+        /*.navbar {*/
+        /*    background-color: #f1f1f1;*/
+        /*    padding: 10px;*/
+        /*}*/
+
+        /*.navbar ul {*/
+        /*    list-style-type: none;*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*}*/
+
+        /*.navbar li {*/
+        /*    display: inline-block;*/
+        /*    margin-right: 10px;*/
+        /*}*/
+
+        /*.navbar a {*/
+        /*    text-decoration: none;*/
+        /*    padding: 5px;*/
+        /*    border: 1px solid #ccc;*/
+        /*    border-radius: 4px;*/
+        /*}*/
+
+        /*.content {*/
+        /*    padding: 20px;*/
+        /*}*/
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #555;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            color : #8e8080;
+        }
+
+    </style>
+    </head>
+    <body>
+        <div class="navbar">
+            <ul>
+                <li><a href="@routes.HomeController.index()">Home</a></li>
+                <li><a href="@routes.LoginController.login()">User</a></li>
+                <li><a href="@routes.AdminController.adminPage()">Admin</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Welcome to Home Page</h1>
+            <p>This is a simple website created using play.</p>
+            <p>If you are user go to user and create profile.</p>
+            <p>If you are a admin then go to admin profile where you are given access to enable or disable the user.</p>
+            <p>Thank you for visting our website.</p>
+        </div>
+    </body>
+</html>
